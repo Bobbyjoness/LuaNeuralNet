@@ -109,17 +109,21 @@ function NeuralNetwork:backwardPropagate(inputs,  desiredOutputs)
 end
 
 function NeuralNetwork:softmax(inputs)
-	local sum = 0
-	for i, val in ipairs (inputs) do
-		sum = sum + math.exp(inputs[i])
-	end
+	if(#inputs > 1) then
+		local sum = 0
+		for i, val in ipairs (inputs) do
+			sum = sum + math.exp(inputs[i])
+		end
 
-	local out = {}
-	for i, val in ipairs (inputs) do
-		out[i] = math.exp(inputs[i])/sum
-	end
+		local out = {}
+		for i, val in ipairs (inputs) do
+			out[i] = math.exp(inputs[i])/sum
+		end
 
-	return out
+		return out
+	else
+		return inputs
+	end
 end
 
 return NeuralNetwork
