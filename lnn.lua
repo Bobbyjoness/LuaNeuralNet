@@ -35,7 +35,7 @@ function NeuralNetwork.create(inputs, outputs, hiddenLayers, neuronsPerHiddenLay
 			network[i][j] = {bias = math.random()*2*initialWeightRange - initialWeightRange}
 			local numWeightedInputs = #network[i-1] 
 			for k = 1, numWeightedInputs do
-				network[i][j][k] = math.random()*2-1
+				network[i][j][k] = math.random()*2*initialWeightRange - initialWeightRange
 			end
 		end
 
